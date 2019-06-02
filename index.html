@@ -40,7 +40,7 @@
 
 
         <div class="row">
-            <div class="col-md-11">
+            <div class="col-md-12">
                 <div class="card-header"> Current Train Schedule</div>
                 <div class="card-body">
                     <table class="table table-sm table-hover" id="train-table">
@@ -58,6 +58,42 @@
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header"> Train </div>
+                    <div class="card-body">
+
+                        <!--bootstrapstuff-->
+                        <form>
+
+                            <div class="form-group">
+                                <label for="train-name-input">Train name</label>
+                                <input type="email" id="train-name-input"
+                                    placeholder="example: Thomas the train">
+                            </div>
+                            <div class="form-group">
+                                <label for="designation-input">Destination</label>
+                                <input type="form-control" id="destination-input"
+                                placeholder="example: Denver">
+                            </div>
+                            <div class="form-group">
+                                    <label for="first-input">First Train Time (HH:mm - military time)</label>
+                                    <input class="form-control" id="first-input">
+                                  </div>
+                            <div class="form-group">
+                                <label for="frequency-input"> Frequency(minutes)</label>
+                                <input class="form-control" id="frequency-input">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary float-left" id="train-btn"> Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
