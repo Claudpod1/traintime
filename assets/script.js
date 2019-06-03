@@ -17,7 +17,7 @@ var firebaseConfig = {
         console.log("click");
       var trainName = $("#train-name-input").val().trim();
       var trainDestination= $("#destination-input").val().trim();
-      var trainFirst= $("#first-input").val().trim();
+      var trainFirst= moment($("#first-input").val().trim(), "LTS").format("X");
       var trainFreq= $("#frequency-input").val().trim();
       
       var newTrain = {
@@ -40,7 +40,7 @@ var firebaseConfig = {
   database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
       var trainName = childSnapshot.val().name;
-      var trainDestination = childSnapshot.val().trainDestination;
+      var trainDestination = childSnapshot.val().destination;
       var trainFirst= childSnapshot.val().firstTrain;
       var trainFreq= childSnapshot.val().frequency;
 
