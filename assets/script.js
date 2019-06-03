@@ -1,49 +1,64 @@
 // firebase and api key needed 
 var firebaseConfig = {
-    apiKey: "AIzaSyBnRpvC6Sq0POCyY3UNKTUItHP7-YzLkeU",
-    authDomain: "test-project-8ecb1.firebaseapp.com",
-    databaseURL: "https://test-project-8ecb1.firebaseio.com",
-    projectId: "test-project-8ecb1",
-    storageBucket: "test-project-8ecb1.appspot.com",
-    messagingSenderId: "973484036922",
-    appId: "1:973484036922:web:054c4987a9d2edd8"
+    apiKey: "AIzaSyBsefHc-Q1bYWUYZod-tZk_gSoqX5fFN9Q",
+    authDomain: "train-time-476fa.firebaseapp.com",
+    databaseURL: "https://train-time-476fa.firebaseio.com",
+    projectId: "train-time-476fa",
+    storageBucket: "train-time-476fa.appspot.com",
+    messagingSenderId: "363232870712",
+    appId: "1:363232870712:web:fa0b0917d3528db4"
   };
 
-  firebaseConfig.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
   $("#train-btn").on("click", function(event){
       event.preventDefault();
-
+        console.log("click");
       var trainName = $("#train-name-input").val().trim();
-      var trainDestination= $("#designation-input").val().trim();
+      var trainDestination= $("#destination-input").val().trim();
       var trainFirst= $("#first-input").val().trim();
-      var trainFreq= ("#frequenct-input").val().trim();
+      var trainFreq= $("#frequency-input").val().trim();
       
       var newTrain = {
         name: trainName,
-        designation: trainDestination,
-        Train: trainFirst,
+        destination: trainDestination,
+        firstTrain: trainFirst,
         frequency: trainFreq,
       };
 
-      database.ref().push(newTrain.name);
+      database.ref().push(newTrain);
 
       console.log(trainDestination);
     //clear the date 
       $("#train-name-input").val("");
-      $("#designation-input").val("");
+      $("#destination-input").val("");
       $("#first-input").val();
-      ("#frequenct-input").val("");
-
+      $("#frequency-input").val("");
   });
 
   database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
+    var frequency = childSnapshot.val().frequency
 
-    var trainName = childSnapshot.val().name;
+    var firstTrain =childSnapshot.val().firstTrain
+    // var arrivalTime= this where Im gonna do mathtime
+    // var minutesToArrival =math to do the mins to arrival
+    var row = $("<tr>");
+    var nameTd =$("<td>").text(childSnapshot.val().name);
+    var destinationTd =$("<td>").text(childSnapshot.val().destination);
+    // var minutesTd =$("<td>").text(minutesToArrival);
+    var frequencyTd =$("<td>").text(frequency);
+    // var arrivalTd =$("<td>").text(arrivalTime);
 
-    console.log(trainName);
+    row.append(nameTD, destinationTD, frequencyTD);
+
+
     
 
+    // var trainName = childSnapshot.val().name;
+
+    // console.log(trainName);
+
+  });
 
