@@ -43,6 +43,8 @@ var firebaseConfig = {
       var trainDestination = childSnapshot.val().trainDestination;
       var trainFirst= childSnapshot.val().firstTrain;
       var trainFreq= childSnapshot.val().frequency;
+
+      console.log(trainDestination);
   
 
     var firstTimeCoverted = moment(trainFirst,"HH:mm").subtract(1, "years");
@@ -51,14 +53,7 @@ var firebaseConfig = {
     var tRemainder = diffTime % tFrequency;
     var minutesToArrival = tFrequency -tRemainder;
     var arrivalTime = moment().add(minutesToArrival, "minutes");
-    
-  
- 
-    var nameTd =$("<td>").text(childSnapshot.val().name);
-    var destinationTd =$("<td>").text(childSnapshot.val().trainDestination);
-    var minutesTd =$("<td>").text(minutesToArrival);
-    var frequencyTd =$("<td>").text(tFrequency);
-    var arrivalTd =$("<td>").text(arrivalTime);
+
 
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
