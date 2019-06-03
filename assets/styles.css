@@ -4,3 +4,13 @@
     text-emphasis: bold;
     border: brown;
 }
+
+.card-header {
+    color: gray;
+
+}
+
+.card-body {
+    color:teal;
+    border: grey;
+}
